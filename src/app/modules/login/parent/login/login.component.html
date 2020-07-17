@@ -10,12 +10,12 @@
                 </span>
 
                 <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
-                    <input class="input100" type="text" name="email" formControlName="email" spellcheck="false">
+                    <input class="input100" type="text" name="email" formControlName="email" spellcheck="false" autocomplete="off">
                     <span class="focus-input100" data-placeholder="Email"></span>
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate="Enter password">
-                    <input class="input100" type="password" name="pass" formControlName="password" spellcheck="false">
+                    <input class="input100" type="password" name="pass" formControlName="password" spellcheck="false" autocomplete="off">
                     <span class="focus-input100" data-placeholder="Password"></span>
                 </div>
 
@@ -33,7 +33,7 @@
                         Don’t have an account?
                     </span>
 
-                    <a class="txt2" href="#">
+                    <a class="txt2" routerLink="/signup" routerLinkActive="active">
                         Sign Up
                     </a>
                 </div>

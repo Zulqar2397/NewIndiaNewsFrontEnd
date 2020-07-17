@@ -11,12 +11,12 @@ export class LoginService {
 
   registerUser(user): Observable<any> {
     let url: string;
-    url = URL.baseURL + "/user/register-user";
+    url = URL.baseURL + "admin/registerAdmin";
     return this.http.post<any>(url, user);
   }
 
   loginUser(user): Observable<any> {
-    let url = URL.baseURL + "/user/login" + user.mailId + "/" + user.passWord;
+    let url = URL.baseURL + "admin/login/" + user.email + "/" + user.password;
     return this.http.get<any>(url);
   }
 }
