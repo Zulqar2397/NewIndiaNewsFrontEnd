@@ -10,7 +10,10 @@ import { PageNotFoundComponent } from './core/page-not-found/page-not-found.comp
 import { NewsComponent } from './core/news/news.component';
 import { NewsDetailsComponent } from './core/news-details/news-details.component';
 import { ContactUsComponent } from './core/contact-us/contact-us.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +27,15 @@ import { ContactUsComponent } from './core/contact-us/contact-us.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut:5000,
+      positionClass: "toast-top-center",
+      preventDuplicates: true
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
