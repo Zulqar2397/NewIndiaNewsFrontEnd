@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, DoCheck } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,5 @@ export class AuthService {
     return this.isLoggedIn;
   }
   ngOnInit() {
-    this.isLoggedIn = false;
   }
 }

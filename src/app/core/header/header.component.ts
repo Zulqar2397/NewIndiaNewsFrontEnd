@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit, DoCheck {
   ngDoCheck(): void {
     if (JSON.parse(localStorage.getItem("admin"))) {
       this.flag = true;
+      this.authService.isUserLoggedIn = true;
     }
   }
   ngOnInit(): void {
@@ -21,11 +22,5 @@ export class HeaderComponent implements OnInit, DoCheck {
     this.flag = false;
     localStorage.clear();
     this.router.navigateByUrl("/");
-  }
-  chck()
-  {
-    console.log(this.authService.isUserLoggedIn);
-    this.router.navigateByUrl("/admin")
-    
   }
 }

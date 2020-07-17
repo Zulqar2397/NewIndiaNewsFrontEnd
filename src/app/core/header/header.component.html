@@ -79,7 +79,7 @@
                                 <li><a href="contact.html" class="nav-link text-left">Contact</a></li>
                                 <li><a routerLink="/signup" *ngIf="!flag" routerLinkActive="active"
                                         class="nav-link text-left">Login/Signup</a></li>
-                                <li><a class="dropbtn" routerLink="./admin" (click)="chck()" *ngIf="flag" routerLinkActive="active"
+                                <li><a class="dropbtn" routerLink="/admin" *ngIf="flag" routerLinkActive="active"
                                         class="nav-link text-left">UserLoggedIn <i class="fa fa-caret-down"></i></a>
                                     <ul class="dropdown">
                                         <li><a (click)="logout()"><p class="pa"><b>Logout</b></p></a></li>

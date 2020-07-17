@@ -8,13 +8,10 @@ import { AuthService } from 'src/app/core/service/auth.service';
 })
 export class ProfileDetailsComponent implements OnInit {
 
-  constructor(private auth:AuthService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    console.log("inside pro det");
-    console.log(this.auth);
-    
-    
+
   }
 
 }
