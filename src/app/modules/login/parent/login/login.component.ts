@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
           this.toastr.success("Logged-in Successfully!");
           this.authService.isUserLoggedIn = data.data;
           localStorage.setItem("admin", JSON.stringify(this.admin.email));
-          this.router.navigateByUrl("/adminpanel");
+          this.router.navigateByUrl("/admin");
         }
       }, error => {
         if (error.error.success === false) {
