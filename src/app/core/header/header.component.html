@@ -61,28 +61,46 @@
                                     <a routerLink="/" class="nav-link text-left">&nbsp;Home</a>
                                 </li>
                                 <li>
-                                    <a href="categories.html" class="nav-link text-left">Categories</a>
+                                    <a routerLink="/category" routerLinkActive="active"
+                                        class="nav-link text-left">Categories</a>
                                 </li>
-                                <li>
-                                    <a href="categories.html" class="nav-link text-left">Politics</a>
+                                <li class="dropdown">
+                                    <a href="categories.html" class="nav-link text-left dropbtn">News <i
+                                            class="fa fa-caret-down"></i></a>
+                                    <div class="dropdown-content">
+                                        <a href="#">Link 1</a>
+                                        <a href="#">Link 2</a>
+                                        <a href="#">Link 3</a>
+                                    </div>
                                 </li>
-                                <li>
-                                    <a href="categories.html" class="nav-link text-left">Business</a>
+                                <li class="dropdown">
+                                    <a href="categories.html" class="nav-link text-left dropbtn">Entertainment <i
+                                            class="fa fa-caret-down"></i></a>
+                                    <div class="dropdown-content">
+                                        <a href="#">Link 1</a>
+                                        <a href="#">Link 2</a>
+                                        <a href="#">Link 3</a>
+                                    </div>
                                 </li>
-                                <li>
-                                    <a href="categories.html" class="nav-link text-left">Health</a>
+                                <li class="dropdown">
+                                    <a href="categories.html" class="nav-link text-left dropbtn">Lifestyle <i
+                                            class="fa fa-caret-down"></i></a>
+                                    <div class="dropdown-content">
+                                        <a href="#">Link 1</a>
+                                        <a href="#">Link 2</a>
+                                        <a href="#">Link 3</a>
+                                    </div>
                                 </li>
-                                <li><a href="categories.html" class="nav-link text-left">Design</a></li>
-                                <li>
-                                    <a href="categories.html" class="nav-link text-left">Sport</a>
-                                </li>
-                                <li><a href="contact.html" class="nav-link text-left">Contact</a></li>
+                                <li><a href="contact.html" class="nav-link text-left">About Us</a></li>
+                                <li><a href="contact.html" class="nav-link text-left">Contact Us</a></li>
                                 <li><a routerLink="/signup" *ngIf="!flag" routerLinkActive="active"
                                         class="nav-link text-left">Login/Signup</a></li>
                                 <li><a class="dropbtn" routerLink="/admin" *ngIf="flag" routerLinkActive="active"
-                                        class="nav-link text-left">UserLoggedIn <i class="fa fa-caret-down"></i></a>
+                                        class="nav-link text-left">{{userName}} <i class="fa fa-caret-down"></i></a>
                                     <ul class="dropdown">
-                                        <li><a (click)="logout()"><p class="pa"><b>Logout</b></p></a></li>
+                                        <li><a (click)="logout()">
+                                                <p class="pa"><b>Logout</b></p>
+                                            </a></li>
                                     </ul>
                                 </li>
 

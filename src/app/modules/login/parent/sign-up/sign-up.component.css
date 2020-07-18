@@ -384,3 +384,7 @@ display-flex, .display-flex, .display-flex-center {
 
   /*# sourceMappingURL=style.css.map */
   
+  .main{
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }

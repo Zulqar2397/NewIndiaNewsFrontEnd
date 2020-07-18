@@ -8,9 +8,13 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit, DoCheck {
   flag: boolean = false;
+  loggedInUser;
+  userName;
   constructor(private authService: AuthService, private router: Router) { }
   ngDoCheck(): void {
     if (JSON.parse(localStorage.getItem("admin"))) {
+      this.loggedInUser = JSON.parse(localStorage.getItem("admin"))
+      this.userName = this.loggedInUser.slice(0, this.loggedInUser.indexOf('@'));
       this.flag = true;
       this.authService.isUserLoggedIn = true;
     }
