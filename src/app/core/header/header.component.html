@@ -65,30 +65,27 @@
                                         class="nav-link text-left">Categories</a>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="categories.html" class="nav-link text-left dropbtn">News <i
+                                    <a class="nav-link text-left dropbtn">News <i
                                             class="fa fa-caret-down"></i></a>
                                     <div class="dropdown-content">
-                                        <a href="#">Link 1</a>
-                                        <a href="#">Link 2</a>
-                                        <a href="#">Link 3</a>
+                                        <a (click)="selectedCategory('Business & Economy')">Business & Economy</a>
+                                        <a (click)="selectedCategory('Politics')">Politics</a>
+                                        <a (click)="selectedCategory('War & Millitary')">War & Millitary</a>
+                                        <a (click)="selectedCategory('World News')">World News</a>
                                     </div>
                                 </li>
-                                <li class="dropdown">
-                                    <a href="categories.html" class="nav-link text-left dropbtn">Entertainment <i
-                                            class="fa fa-caret-down"></i></a>
-                                    <div class="dropdown-content">
-                                        <a href="#">Link 1</a>
-                                        <a href="#">Link 2</a>
-                                        <a href="#">Link 3</a>
-                                    </div>
+                                <li>
+                                    <a (click)="selectedCategory('Entertainment')" class="nav-link text-left dropbtn">Entertainment</a>
                                 </li>
+                                <li><a (click)="selectedCategory('Technology')" class="nav-link text-left dropbtn">Technology</a></li>
                                 <li class="dropdown">
-                                    <a href="categories.html" class="nav-link text-left dropbtn">Lifestyle <i
+                                    <a class="nav-link text-left dropbtn">Lifestyle <i
                                             class="fa fa-caret-down"></i></a>
                                     <div class="dropdown-content">
-                                        <a href="#">Link 1</a>
-                                        <a href="#">Link 2</a>
-                                        <a href="#">Link 3</a>
+                                        <a (click)="selectedCategory('Fashion')">Fashion</a>
+                                        <a (click)="selectedCategory('Food')">Food</a>
+                                        <a (click)="selectedCategory('Health & Fitness')">Health & Fitness</a>
+                                        <a (click)="selectedCategory('Travel')">Travel</a>
                                     </div>
                                 </li>
                                 <li><a href="contact.html" class="nav-link text-left">About Us</a></li>

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutUsComponent } from './core/about-us/about-us.component';
@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { CategoryComponent } from './core/category/category.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { ToastrModule } from 'ngx-toastr';
     PageNotFoundComponent,
     NewsComponent,
     NewsDetailsComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +33,7 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,BrowserAnimationsModule,
+    NgbModule,
     ToastrModule.forRoot({
       timeOut:5000,
       positionClass: "toast-top-center",

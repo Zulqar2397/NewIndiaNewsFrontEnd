@@ -81,7 +81,7 @@ export class SignUpComponent implements OnInit, DoCheck {
           this.toastr.success("Sign-up Successfully!");
           this.authService.isUserLoggedIn = data.data;
           localStorage.setItem("admin", JSON.stringify(this.admin.email));
-          this.router.navigateByUrl("/adminpanel");
+          this.router.navigateByUrl("/admin");
         }
       }, error => {
         if (error.error.success === false) {

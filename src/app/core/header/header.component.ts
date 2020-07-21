@@ -1,6 +1,7 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { AuthService } from '../service/auth.service';
 import { Router } from '@angular/router';
+import { NewsappService } from '../service/newsapp.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -10,7 +11,7 @@ export class HeaderComponent implements OnInit, DoCheck {
   flag: boolean = false;
   loggedInUser;
   userName;
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private newsService: NewsappService) { }
   ngDoCheck(): void {
     if (JSON.parse(localStorage.getItem("admin"))) {
       this.loggedInUser = JSON.parse(localStorage.getItem("admin"))
@@ -26,5 +27,15 @@ export class HeaderComponent implements OnInit, DoCheck {
     this.flag = false;
     localStorage.clear();
     this.router.navigateByUrl("/");
+  }
+
+  selectedCategory(categoryName: string) {
+    this.newsService.sendSelectedCategoryName(categoryName);
+    this.redirectTo("/category")
+  }
+
+  redirectTo(uri) {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+      this.router.navigate([uri]));
   }
 }
