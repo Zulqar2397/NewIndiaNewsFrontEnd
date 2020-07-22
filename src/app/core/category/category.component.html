@@ -12,18 +12,17 @@
                         <div class="thumbnail order-md-2"
                             style="background-image: url('../../../assets/images/img_h_4.jpg')"></div>
                         <div class="contents order-md-1 pl-0">
-                            <h2><a href="blog-single.html">{{item.title}}</a></h2>
+                            <h2 class="set-pointer" (click)="sendSelectedNews(item)"><a>{{item.title}}</a></h2>
                             <p class="mb-3">{{item.description}}</p>
                             <div class="post-meta">
-                                <span class="d-block"><a href="#">{{item.source}}</a> in <a
-                                        href="#">{{selectedCategoryName}}</a></span>
+                                <span class="d-block"><a>{{item.source}}</a> in <a>{{selectedCategoryName}}</a></span>
                                 <span class="date-read">{{item.date}}<span class="mx-1"></span> {{item.time}} <span
                                         class="icon-star2"></span></span>
                             </div>
                         </div>
                     </div>
-                    <ngb-pagination (pageChange)="gotoTop()" [collectionSize]="newsList?.length" [(page)]="page" [maxSize]="5" [rotate]="true"
-                        [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+                    <ngb-pagination (pageChange)="gotoTop()" [collectionSize]="newsList?.length" [(page)]="page"
+                        [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
                 </div>
                 <div class="col-lg-3">
                     <div class="section-title">

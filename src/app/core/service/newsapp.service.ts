@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { URL } from '../../utilities/url'
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { News } from 'src/app/shared/models/news';
 @Injectable({
   providedIn: 'root'
 })
@@ -20,5 +21,13 @@ export class NewsappService {
   categoryNameSubjectAsObservable = this.categoryNameSubject.asObservable();
   sendSelectedCategoryName(categoryName: string) {
     this.categoryNameSubject.next(categoryName);
+  }
+
+  //Method for sending selected news
+  newsSubject = new BehaviorSubject<News>(undefined);
+  newsSubjectAsObservable = this.newsSubject.asObservable();
+  sendSelectedNews(news:News)
+  {
+    this.newsSubject.next(news);
   }
 }

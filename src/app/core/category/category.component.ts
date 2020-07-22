@@ -35,4 +35,9 @@ export class CategoryComponent implements OnInit {
       behavior: 'smooth'
     });
   }
+
+  sendSelectedNews(item) {
+    this.newsService.sendSelectedNews(item);
+    this.router.navigateByUrl("/news-details")
+  }
 }
