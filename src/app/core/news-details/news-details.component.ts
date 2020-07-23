@@ -19,31 +19,31 @@ export class NewsDetailsComponent implements OnInit {
     this.newsService.newsSubjectAsObservable.subscribe(data => {
       this.news = data;
       this.updatedLikes = data?.likeCount;
-      console.log(data);
 
     })
+    this.newsService.updatePageHitCount(this.news?.newsId).subscribe();
   }
   checkLike() {
     if (!this.myDiv.nativeElement.classList.contains('like-btn--disabled')) {
       this.updatedLikes = this.updatedLikes + 1;
       this.myDiv.nativeElement.disabled = true;
+      this.newsService.updateLikeCount(this.news?.newsId).subscribe();
     }
 
   }
-//Adding comment
-commentGiven:Comment;
+  //Adding comment
+  commentGiven: Comment;
   commentDetails = new FormGroup({
     postedBy: new FormControl(),
     comment: new FormControl()
   });
-  onSubmit()
-  {
-    this.commentGiven=new Comment();
-    this.commentGiven.postedBy=this.commentDetails.value.postedBy;
-    this.commentGiven.comment=this.commentDetails.value.comment;
-    console.log(this.commentGiven);
-    
-
+  onSubmit() {
+    this.commentGiven = new Comment();
+    this.commentGiven.postedBy = this.commentDetails.value.postedBy;
+    this.commentGiven.comment = this.commentDetails.value.comment;
+    this.commentDetails.reset();
+    this.newsService.postComment(this.news?.newsId, this.commentGiven).subscribe();
+    this.news.comments.push(this.commentGiven);
   }
 
 }

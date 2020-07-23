@@ -1,6 +1,7 @@
 import { Admins } from './admins';
 import { Image } from './image';
 import { Category } from './category';
+import { Comment } from './comment'
 export class News {
     newsId:number;
     title:string;
