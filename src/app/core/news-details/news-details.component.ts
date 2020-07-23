@@ -21,7 +21,9 @@ export class NewsDetailsComponent implements OnInit {
       this.updatedLikes = data?.likeCount;
 
     })
-    this.newsService.updatePageHitCount(this.news?.newsId).subscribe();
+    if (this.news?.newsId != undefined) {
+      this.newsService.updatePageHitCount(this.news?.newsId).subscribe();
+    }
   }
   checkLike() {
     if (!this.myDiv.nativeElement.classList.contains('like-btn--disabled')) {
