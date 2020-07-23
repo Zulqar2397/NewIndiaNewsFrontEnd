@@ -3,6 +3,7 @@ import { NewsappService } from '../service/newsapp.service';
 import { News } from 'src/app/shared/models/news';
 import { Comment } from '../../shared/models/comment'
 import { FormGroup, FormControl } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-news-details',
@@ -13,7 +14,7 @@ export class NewsDetailsComponent implements OnInit {
   @ViewChild('myDiv') myDiv: ElementRef;
   news: News;
   updatedLikes: number;
-  constructor(private newsService: NewsappService) { }
+  constructor(private newsService: NewsappService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.newsService.newsSubjectAsObservable.subscribe(data => {
@@ -44,7 +45,11 @@ export class NewsDetailsComponent implements OnInit {
     this.commentGiven.postedBy = this.commentDetails.value.postedBy;
     this.commentGiven.comment = this.commentDetails.value.comment;
     this.commentDetails.reset();
-    this.newsService.postComment(this.news?.newsId, this.commentGiven).subscribe();
+    this.newsService.postComment(this.news?.newsId, this.commentGiven).subscribe(data => {
+      if (data.success === true) {
+        this.toastr.success("Comment Posted!");
+      }
+    });
     this.news.comments.push(this.commentGiven);
   }
 

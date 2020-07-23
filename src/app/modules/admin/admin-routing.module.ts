@@ -20,6 +20,7 @@ const routes: Routes = [
       },
       {
         path: "profile-details",
+        
         component: ProfileDetailsComponent
       },
       {
