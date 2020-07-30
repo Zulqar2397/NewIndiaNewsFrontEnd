@@ -1,0 +1,131 @@
+<br>
+<div class="site-wrap">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<!-- <style>
+#mySidenav a {
+  margin: 0;
+  position: fixed;
+  left: 12px;
+  transition: 0.3s;
+  padding: 8px;
+  width: 200px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  border-radius: 0 5px 5px 0;
+  overflow: auto;
+
+}
+
+#mySidenav a:hover {
+  left: 0;
+}
+
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+@media screen and (max-width: 700px) {
+  .mySidenav {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+  .mySidenav a {
+    text-align: center;
+    float: none;
+  }
+}
+
+#profile {
+  top: 220px;
+  background-color: #2e0300;
+}
+
+#addnews {
+  top: 280px;
+  background-color: #2e0300;
+}
+
+#mynews {
+  top: 340px;
+  background-color: #2e0300;
+}
+#extra {
+  top: 400px;
+  background-color: #2e0300;
+} </style>
+-->
+<style>
+  
+.sidebar {
+  margin: 0;
+  padding: 20px;
+  width: 200px;
+  background-color: #313131;
+  position: absolute;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: rgb(255, 255, 255);
+  padding: 20px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+</style>
+
+
+
+<div id="mySidenav" class="sidebar">
+  <a href="/#/admin/profile-details" id="profile">Profile</a>
+  <a href="/#/admin/add-news" id="addnews">Add News</a>
+  <a href="/#/admin/news-posted" id="mynews">My News</a>
+  <!-- <a href="#" id="extra">Extra</a> -->
+</div>
+
+
+
+
+
+</div>
+<router-outlet></router-outlet>

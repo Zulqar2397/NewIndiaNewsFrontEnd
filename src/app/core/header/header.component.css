@@ -1,0 +1,96 @@
+.nav-link:hover {
+    background-color: gray;
+  }
+  
+  
+  /* li {
+    color: #fff;
+    background: darkorange;
+    display: block;
+    float: left;
+    padding: 1rem;
+    position: relative;
+    text-decoration: none;
+    transition-duration: 0.5s;
+  }
+    
+  li a {
+    color: #fff;
+  }
+   */
+  li:hover {
+    background: none;
+    cursor: pointer;
+    text-align: center;
+    font-style: oblique;
+  }
+  
+  ul li ul {
+    background: transparent;
+    visibility: hidden;
+    opacity: 0;
+    width: 9.14rem;
+    position: fixed;
+    transition: all 0.5s ease;
+    display: none;
+  }
+  
+  ul li:hover > ul,
+  ul li ul:hover {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+  }
+  
+  ul li ul li {
+    clear: both;
+    width: 100%;
+  }
+
+  .pa {
+    font-size: 15px;
+    margin: 20px;
+    -webkit-transition: color 0.5s; /* For Safari 3.0 to 6.0 */
+    transition: color 0.5s; /* For modern browsers */
+}
+.pa:hover {
+    color: #ff0000;
+}
+
+
+
+
+li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+/* add lightslategray as background color */
+.dropdown-content a:hover {background-color: #f1f1f1;} 
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
