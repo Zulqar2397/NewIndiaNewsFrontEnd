@@ -1,0 +1,15 @@
+<div class="site-wrap">
+
+    <div class="sidebar">
+        <a [routerLinkActive]="['active']" routerLink="/admin/profile-details"><span class="icon-home"></span>
+            Profile</a>
+        <a [routerLinkActive]="['active']" routerLink="/admin/add-news"><span class="fa fa-plus"></span> Add News</a>
+        <a [routerLinkActive]="['active']" routerLink="/admin/news-posted"><i class="fa fa-history"
+                aria-hidden="true"></i> History</a>
+    </div>
+
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+
+</div>

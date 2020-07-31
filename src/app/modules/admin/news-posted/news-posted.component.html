@@ -1,0 +1,31 @@
+<div class="site-wrap">
+    <div class="site-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="section-title">
+                        <span class="caption d-block small">News Posted By Admin</span>
+                    </div>
+                    <div class="post-entry-2 d-flex"
+                        *ngFor="let item of newsList | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                        <div class="thumbnail order-md-2"
+                            style="background-image: url('../../../../assets/images/img_h_4.jpg')"></div>
+                        <div class="contents order-md-1 pl-0">
+                            <h2 class="set-pointer" (click)="sendSelectedNews(item)"><a>{{item.title}}</a></h2>
+                            <p class="mb-3">{{item.description | slice:0:170}} <i class="set-pointer"
+                                    (click)="sendSelectedNews(item)"> ... See more</i></p>
+                            <div class="post-meta">
+                                <span class="d-block"><a>{{item.source}}</a> in <a>{{selectedCategoryName}}</a></span>
+                                <span class="date-read">{{item.date}}<span class="mx-1"></span> {{item.time}} <span
+                                        class="icon-star2"></span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <ngb-pagination (pageChange)="gotoTop()" [collectionSize]="newsList?.length" [(page)]="page"
+                        [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

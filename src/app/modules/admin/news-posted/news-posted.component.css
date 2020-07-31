@@ -1,0 +1,10 @@
+.set-pointer{
+    cursor: pointer;
+    font-weight: bolder;
+    color: black;
+    }
+    .set-pointer:hover
+    {
+    color: darkcyan;
+    font-weight: bolder;
+    }
