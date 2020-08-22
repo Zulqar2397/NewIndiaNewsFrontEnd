@@ -2,19 +2,19 @@
     <div class="site-section py-0">
         <div class="container">
             <div class="row">
-              <div >
-                <h2 class="pb-2">Past Events</h2>
-                <ngb-carousel *ngIf="event_list">
-                  <ng-template ngbSlide *ngFor="let event of event_list">
-                    <img [src]="event" alt="Random slide">
-                    <div class="carousel-caption">
-                      
-                    </div>
-                  </ng-template>
-                </ngb-carousel>
-              </div>
+                <div>
+                    <h2 class="pb-2">Past Events</h2>
+                    <ngb-carousel *ngIf="event_list">
+                        <ng-template ngbSlide *ngFor="let event of event_list">
+                            <img [src]="event" alt="Random slide">
+                            <div class="carousel-caption">
+
+                            </div>
+                        </ng-template>
+                    </ngb-carousel>
+                </div>
             </div>
-          </div>
+        </div>
     </div>
 
 
@@ -25,61 +25,37 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="section-title">
-                                <h2>Editor's Pick</h2>
+                                <h2>Recent News</h2>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="post-entry-1">
+                            <div class="post-entry-1" *ngFor="let item of recentNewsList.slice(0,1)">
                                 <a href="post-single.html"><img src="assets/images/img_h_1.jpg" alt="Image"
                                         class="img-fluid"></a>
-                                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus
-                                    praesentium neque, voluptatum quam quibusdam.</p>
+                                <h2 class="set-pointer"><a (click)="sendSelectedNews(item)">{{item.title}}</a></h2>
+                                <p>{{item.description | slice:0:220}} <i class="set-pointer"
+                                        (click)="sendSelectedNews(item)"> ... See more</i></p>
                                 <div class="post-meta">
-                                    <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                                    <span class="date-read">Jun 14 <span class="mx-1"></span> 3 min read <span
-                                            class="icon-star2"></span></span>
+                                    <span class="d-block"><a>{{item.source}}</a> in
+                                        <a>{{item.category.categoryName}}</a></span>
+                                    <span class="date-read">{{item.date | date}}<span class="mx-1"></span> {{item.time}}
+                                        <span class="icon-star2"></span></span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="post-entry-2 d-flex bg-light">
+                            <div class="post-entry-2 d-flex bg-light" *ngFor="let item of recentNewsList | slice:1">
                                 <div class="thumbnail" style="background-image: url('assets/images/img_v_1.jpg')"></div>
                                 <div class="contents">
-                                    <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a>
+                                    <h2 class="set-pointer"><a (click)="sendSelectedNews(item)">{{item.title}}</a>
                                     </h2>
                                     <div class="post-meta">
-                                        <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                                        <span class="date-read">Jun 14 <span class="mx-1"></span> 3 min read <span
-                                                class="icon-star2"></span></span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="post-entry-2 d-flex">
-                                <div class="thumbnail" style="background-image: url('assets/images/img_v_2.jpg')"></div>
-                                <div class="contents">
-                                    <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a>
-                                    </h2>
-                                    <div class="post-meta">
-                                        <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                                        <span class="date-read">Jun 14 <span class="mx-1"></span> 3 min read <span
-                                                class="icon-star2"></span></span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="post-entry-2 d-flex">
-                                <div class="thumbnail" style="background-image: url('assets/images/img_v_3.jpg')"></div>
-                                <div class="contents">
-                                    <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a>
-                                    </h2>
-                                    <div class="post-meta">
-                                        <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                                        <span class="date-read">Jun 14 <span class="mx-1"></span> 3 min read <span
-                                                class="icon-star2"></span></span>
+                                        <span class="d-block"><a>{{item.source}}</a> in
+                                            <a>{{item.category.categoryName}}</a></span>
+                                        <span class="date-read">{{item.date | date}} <span class="mx-1"></span>
+                                            {{item.time}} <span class="icon-star2"></span></span>
                                     </div>
                                 </div>
                             </div>
@@ -91,324 +67,140 @@
                         <h2>Trending</h2>
                     </div>
 
-                    <div class="trend-entry d-flex">
-                        <div class="number align-self-start">01</div>
+                    <div class="trend-entry d-flex" *ngFor="let trendingNews of trendingNewsList; let i = index">
+                        <div class="number align-self-start">0{{i+1}}</div>
                         <div class="trend-contents">
-                            <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
+                            <h2 class="set-pointer" (click)="sendSelectedNews(trendingNews)">
+                                <a>{{trendingNews.title}}</a></h2>
                             <div class="post-meta">
-                                <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                                <span class="date-read">Jun 14 <span class="mx-1"></span> 3 min read <span
-                                        class="icon-star2"></span></span>
+                                <span class="d-block"><a>{{trendingNews.source}}</a> in
+                                    <a>{{trendingNews.category.categoryName}}</a></span>
+                                <span class="date-read">{{trendingNews.date | date}}</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="trend-entry d-flex">
-                        <div class="number align-self-start">02</div>
-                        <div class="trend-contents">
-                            <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                            <div class="post-meta">
-                                <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                                <span class="date-read">Jun 14 <span class="mx-1"></span> 3 min read <span
-                                        class="icon-star2"></span></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="trend-entry d-flex">
-                        <div class="number align-self-start">03</div>
-                        <div class="trend-contents">
-                            <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                            <div class="post-meta">
-                                <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                                <span class="date-read">Jun 14 <span class="mx-1"></span> 3 min read <span
-                                        class="icon-star2"></span></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="trend-entry d-flex">
-                        <div class="number align-self-start">04</div>
-                        <div class="trend-contents">
-                            <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                            <div class="post-meta">
-                                <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                                <span class="date-read">Jun 14 <span class="mx-1"></span> 3 min read <span
-                                        class="icon-star2"></span></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <p>
-                        <a href="#" class="more">See All Trends <span class="icon-keyboard_arrow_right"></span></a>
-                    </p>
-
+                    <!-- End Of Trending News -->
                 </div>
             </div>
         </div>
-    </div>
-    <!-- END section -->
+        <!-- END section -->
 
-    <div class="py-0">
-        <div class="container">
-            <div class="half-post-entry d-block d-lg-flex bg-light">
-                <div class="img-bg" style="background-image: url('assets/images/big_img_1.jpg')"></div>
-                <div class="contents">
-                    <span class="caption">Editor's Pick</span>
-                    <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                    <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate vero obcaecati
-                        natus adipisci necessitatibus eius, enim vel sit ad reiciendis. Enim praesentium magni delectus
-                        cum, tempore deserunt aliquid quaerat culpa nemo veritatis, iste adipisci excepturi consectetur
-                        doloribus aliquam accusantium beatae?</p>
-
-                    <div class="post-meta">
-                        <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">Food</a></span>
-                        <span class="date-read">Jun 14 <span class="mx-1"></span> 3 min read <span
-                                class="icon-star2"></span></span>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="site-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="section-title">
-                        <h2>Politics</h2>
-                    </div>
-                    <div class="post-entry-2 d-flex">
-                        <div class="thumbnail" style="background-image: url('assets/images/img_v_1.jpg')"></div>
-                        <div class="contents">
-                            <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                            <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi
-                                temporibus praesentium neque, voluptatum quam quibusdam.</p>
-                            <div class="post-meta">
-                                <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                                <span class="date-read">Jun 14 <span class="mx-1"></span> 3 min read <span
-                                        class="icon-star2"></span></span>
+        <div class="site-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="section-title">
+                            <h2 class="set-pointer" (click)="selectedCategory('Politics')">Politics</h2>
+                        </div>
+                        <div class="post-entry-2 d-flex" *ngFor="let politics of popularPoliticsNewsList">
+                            <div class="thumbnail" style="background-image: url('assets/images/img_v_1.jpg')"></div>
+                            <div class="contents">
+                                <h2><a (click)="sendSelectedNews(item)">{{politics.title}}</a></h2>
+                                <p class="mb-3">{{politics.description | slice:0:220}} <i class="set-pointer"
+                                        (click)="sendSelectedNews(item)"> ... See more</i></p>
+                                <div class="post-meta">
+                                    <span class="d-block"><a>{{politics.source}}</a> in
+                                        <a>{{politics.category.categoryName}}</a></span>
+                                    <span class="date-read">{{politics.date | date}}<span class="mx-1"></span>
+                                        {{politics.time}} <span class="icon-star2"></span></span>
+                                </div>
                             </div>
                         </div>
+                        <p class="see-all-pos" (click)="selectedCategory('Politics')">
+                            <i class="set-pointer">See All Politics News<span
+                                    class="icon-keyboard_arrow_right"></span></i>
+                        </p>
                     </div>
-                    <div class="post-entry-2 d-flex">
-                        <div class="thumbnail" style="background-image: url('assets/images/img_v_2.jpg')"></div>
-                        <div class="contents">
-                            <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                            <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi
-                                temporibus praesentium neque, voluptatum quam quibusdam.</p>
-                            <div class="post-meta">
-                                <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                                <span class="date-read">Jun 14 <span class="mx-1"></span> 3 min read <span
-                                        class="icon-star2"></span></span>
+                    <div class="col-lg-6">
+                        <div class="section-title">
+                            <h2 class="set-pointer" (click)="selectedCategory('Business & Economy')">Business & Economy
+                            </h2>
+                        </div>
+                        <div class="post-entry-2 d-flex" *ngFor="let item of popularBusinessAndEconomyNewsList">
+                            <div class="thumbnail" style="background-image: url('assets/images/img_v_1.jpg')"></div>
+                            <div class="contents">
+                                <h2><a (click)="sendSelectedNews(item)">{{item.title}}</a></h2>
+                                <p class="mb-3">{{item.description | slice:0:220}} <i class="set-pointer"
+                                        (click)="sendSelectedNews(item)"> ... See more</i></p>
+                                <div class="post-meta">
+                                    <span class="d-block"><a>{{item.source}}</a> in
+                                        <a>{{item.category.categoryName}}</a></span>
+                                    <span class="date-read">{{item.date | date}}<span class="mx-1"></span> {{item.time}}
+                                        <span class="icon-star2"></span></span>
+                                </div>
                             </div>
                         </div>
+                        <p class="see-all-pos" (click)="selectedCategory('Business & Economy')">
+                            <i class="set-pointer">See All Business & Economy News<span
+                                    class="icon-keyboard_arrow_right"></span></i>
+                        </p>
                     </div>
-                    <div class="post-entry-2 d-flex">
-                        <div class="thumbnail" style="background-image: url('assets/images/img_v_3.jpg')"></div>
-                        <div class="contents">
-                            <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                            <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi
-                                temporibus praesentium neque, voluptatum quam quibusdam.</p>
-                            <div class="post-meta">
-                                <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                                <span class="date-read">Jun 14 <span class="mx-1"></span> 3 min read <span
-                                        class="icon-star2"></span></span>
+                    <div class="col-lg-6">
+                        <div class="section-title">
+                            <h2 class="set-pointer" (click)="selectedCategory('World News')">World News</h2>
+                        </div>
+                        <div class="post-entry-2 d-flex" *ngFor="let item of popularWorldNewsList">
+                            <div class="thumbnail" style="background-image: url('assets/images/img_v_1.jpg')"></div>
+                            <div class="contents">
+                                <h2><a (click)="sendSelectedNews(item)">{{item.title}}</a></h2>
+                                <p class="mb-3">{{item.description | slice:0:220}} <i class="set-pointer"
+                                        (click)="sendSelectedNews(item)"> ... See more</i></p>
+                                <div class="post-meta">
+                                    <span class="d-block"><a>{{item.source}}</a> in
+                                        <a>{{item.category.categoryName}}</a></span>
+                                    <span class="date-read">{{item.date | date}}<span class="mx-1"></span> {{item.time}}
+                                        <span class="icon-star2"></span></span>
+                                </div>
                             </div>
                         </div>
+                        <p class="see-all-pos" (click)="selectedCategory('World News')">
+                            <i class="set-pointer">See All World News<span class="icon-keyboard_arrow_right"></span></i>
+                        </p>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="section-title">
-                        <h2>Business</h2>
-                    </div>
-                    <div class="post-entry-2 d-flex">
-                        <div class="thumbnail" style="background-image: url('assets/images/img_v_1.jpg')"></div>
-                        <div class="contents">
-                            <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                            <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi
-                                temporibus praesentium neque, voluptatum quam quibusdam.</p>
-                            <div class="post-meta">
-                                <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                                <span class="date-read">Jun 14 <span class="mx-1"></span> 3 min read <span
-                                        class="icon-star2"></span></span>
+                    <div class="col-lg-6">
+                        <div class="section-title">
+                            <h2 class="set-pointer" (click)="selectedCategory('Technology')">Technology</h2>
+                        </div>
+                        <div class="post-entry-2 d-flex" *ngFor="let item of popularTechnologyNewsList">
+                            <div class="thumbnail" style="background-image: url('assets/images/img_v_1.jpg')"></div>
+                            <div class="contents">
+                                <h2><a (click)="sendSelectedNews(item)">{{item.title}}</a></h2>
+                                <p class="mb-3">{{item.description | slice:0:220}} <i class="set-pointer"
+                                        (click)="sendSelectedNews(item)"> ... See more</i></p>
+                                <div class="post-meta">
+                                    <span class="d-block"><a>{{item.source}}</a> in
+                                        <a>{{item.category.categoryName}}</a></span>
+                                    <span class="date-read">{{item.date | date}}<span class="mx-1"></span> {{item.time}}
+                                        <span class="icon-star2"></span></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="post-entry-2 d-flex">
-                        <div class="thumbnail" style="background-image: url('assets/images/img_v_2.jpg')"></div>
-                        <div class="contents">
-                            <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                            <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi
-                                temporibus praesentium neque, voluptatum quam quibusdam.</p>
-                            <div class="post-meta">
-                                <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                                <span class="date-read">Jun 14 <span class="mx-1"></span> 3 min read <span
-                                        class="icon-star2"></span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="post-entry-2 d-flex">
-                        <div class="thumbnail" style="background-image: url('assets/images/img_v_3.jpg')"></div>
-                        <div class="contents">
-                            <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                            <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi
-                                temporibus praesentium neque, voluptatum quam quibusdam.</p>
-                            <div class="post-meta">
-                                <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                                <span class="date-read">Jun 14 <span class="mx-1"></span> 3 min read <span
-                                        class="icon-star2"></span></span>
-                            </div>
-                        </div>
+                        <p class="see-all-pos" (click)="selectedCategory('Technology')">
+                            <i class="set-pointer">See All Technology News<span
+                                    class="icon-keyboard_arrow_right"></span></i>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-
-
-    <div class="site-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-9">
-                    <div class="section-title">
-                        <h2>Recent News</h2>
+        <div class="site-section subscribe bg-light">
+            <div class="container">
+                <form action="#" class="row align-items-center">
+                    <div class="col-md-5 mr-auto">
+                        <h2>Newsletter Subcribe</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis aspernatur ut at quae
+                            omnis
+                            pariatur obcaecati possimus nisi ea iste!</p>
                     </div>
-                    <div class="post-entry-2 d-flex">
-                        <div class="thumbnail order-md-2" style="background-image: url('assets/images/img_h_4.jpg')">
-                        </div>
-                        <div class="contents order-md-1 pl-0">
-                            <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                            <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi
-                                temporibus praesentium neque, voluptatum quam quibusdam.</p>
-                            <div class="post-meta">
-                                <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                                <span class="date-read">Jun 14 <span class="mx-1"></span> 3 min read <span
-                                        class="icon-star2"></span></span>
-                            </div>
+                    <div class="col-md-6 ml-auto">
+                        <div class="d-flex">
+                            <input type="email" class="form-control" placeholder="Enter your email">
+                            <button type="submit" class="btn btn-secondary"><span
+                                    class="icon-paper-plane"></span></button>
                         </div>
                     </div>
-
-                    <div class="post-entry-2 d-flex">
-                        <div class="thumbnail order-md-2" style="background-image: url('assets/images/img_h_3.jpg')">
-                        </div>
-                        <div class="contents order-md-1 pl-0">
-                            <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                            <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi
-                                temporibus praesentium neque, voluptatum quam quibusdam.</p>
-                            <div class="post-meta">
-                                <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                                <span class="date-read">Jun 14 <span class="mx-1"></span> 3 min read <span
-                                        class="icon-star2"></span></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="post-entry-2 d-flex">
-                        <div class="thumbnail order-md-2" style="background-image: url('assets/images/img_h_3.jpg')">
-                        </div>
-                        <div class="contents order-md-1 pl-0">
-                            <span class="caption mb-4 d-block">Editor's Pick</span>
-                            <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                            <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi
-                                temporibus praesentium neque, voluptatum quam quibusdam.</p>
-                            <div class="post-meta">
-                                <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                                <span class="date-read">Jun 14 <span class="mx-1"></span> 3 min read <span
-                                        class="icon-star2"></span></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="section-title">
-                        <h2>Popular Posts</h2>
-                    </div>
-
-                    <div class="trend-entry d-flex">
-                        <div class="number align-self-start">01</div>
-                        <div class="trend-contents">
-                            <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                            <div class="post-meta">
-                                <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                                <span class="date-read">Jun 14 <span class="mx-1"></span> 3 min read <span
-                                        class="icon-star2"></span></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="trend-entry d-flex">
-                        <div class="number align-self-start">02</div>
-                        <div class="trend-contents">
-                            <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                            <div class="post-meta">
-                                <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                                <span class="date-read">Jun 14 <span class="mx-1"></span> 3 min read <span
-                                        class="icon-star2"></span></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="trend-entry d-flex">
-                        <div class="number align-self-start">03</div>
-                        <div class="trend-contents">
-                            <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                            <div class="post-meta">
-                                <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                                <span class="date-read">Jun 14 <span class="mx-1"></span> 3 min read <span
-                                        class="icon-star2"></span></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="trend-entry d-flex pl-0">
-                        <div class="number align-self-start">04</div>
-                        <div class="trend-contents">
-                            <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                            <div class="post-meta">
-                                <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                                <span class="date-read">Jun 14 <span class="mx-1"></span> 3 min read <span
-                                        class="icon-star2"></span></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <p>
-                        <a href="#" class="more">See All Popular <span class="icon-keyboard_arrow_right"></span></a>
-                    </p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-6">
-                    <ul class="custom-pagination list-unstyled">
-                        <li><a href="#">1</a></li>
-                        <li class="active">2</li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                    </ul>
-                </div>
+                </form>
             </div>
         </div>
     </div>
-
-    <div class="site-section subscribe bg-light">
-        <div class="container">
-            <form action="#" class="row align-items-center">
-                <div class="col-md-5 mr-auto">
-                    <h2>Newsletter Subcribe</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis aspernatur ut at quae omnis
-                        pariatur obcaecati possimus nisi ea iste!</p>
-                </div>
-                <div class="col-md-6 ml-auto">
-                    <div class="d-flex">
-                        <input type="email" class="form-control" placeholder="Enter your email">
-                        <button type="submit" class="btn btn-secondary"><span class="icon-paper-plane"></span></button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>

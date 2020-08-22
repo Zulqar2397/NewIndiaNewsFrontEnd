@@ -10,6 +10,7 @@ import { News } from '../../shared/models/news'
 })
 export class CategoryComponent implements OnInit {
   selectedCategoryName: string;
+  trendingNewsList: News[] = [];
   newsList: News[];
   page = 1;
   pageSize = 10;
@@ -25,6 +26,10 @@ export class CategoryComponent implements OnInit {
       this.newsList = data.data;
       console.log(this.newsList);
 
+    })
+
+    this.newsService.getTrendingNews().subscribe(data => {
+      this.trendingNewsList = data.data;
     })
 
   }

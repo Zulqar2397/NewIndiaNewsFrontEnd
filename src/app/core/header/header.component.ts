@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit, DoCheck {
 
   selectedCategory(categoryName: string) {
     this.newsService.sendSelectedCategoryName(categoryName);
-    this.redirectTo("/category")
+    this.redirectTo("/category");
   }
 //this is used because when user is inside category and chose to select any category, oninit is not called on same route redirct
   redirectTo(uri) {

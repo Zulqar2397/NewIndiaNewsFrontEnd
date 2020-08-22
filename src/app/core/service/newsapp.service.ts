@@ -48,13 +48,26 @@ export class NewsappService {
     return this.http.get<any>(url);
   }
 
-  getAllNewsPostedByAdmin(email:string): Observable<any>
-  {
-    let url = URL.baseURL + "admin/get-news-by-admin/"+email;
+  getAllNewsPostedByAdmin(email: string): Observable<any> {
+    let url = URL.baseURL + "admin/get-news-by-admin/" + email;
     return this.http.get<any>(url);
   }
 
+  getTrendingNews(): Observable<any> {
+    let url = URL.baseURL + "news/get-most-liked-news";
+    return this.http.get<any>(url);
+  }
 
+  getNewslistWithMaxHitCount(): Observable<any> {
+    let url = URL.baseURL + "news/get-popular-newslist";
+    return this.http.get<any>(url);
+  }
+
+  getRecentNewsList(): Observable<any> {
+    let url = URL.baseURL + "news/get-recent-news";
+    return this.http.get<any>(url);
+  }
+ 
   //Method for sending category name
   categoryNameSubject = new BehaviorSubject<string>(undefined);
   categoryNameSubjectAsObservable = this.categoryNameSubject.asObservable();
